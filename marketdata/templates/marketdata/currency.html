@@ -1,0 +1,19 @@
+<!doctype html>
+<title>crypto.</title>
+<meta charset="utf-8">
+<meta name="description" content="24hr crypto stats from coinbase">
+<meta name="author" content="joe">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'marketdata/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'skeleton.css' %}">
+
+<div class=container>
+  <div id=header>
+    <strong id=title>24 Hour Cryptocurrency Statistics from Coinbase Pro </strong>
+    <p> data updated every 10 minutes </p>
+    <hr class=hr>
+  </div>
+</div>
+<h1> Currency: {{ currency }}</h1>

@@ -1,0 +1,48 @@
+<!doctype html>
+<title>crypto.</title>
+<meta charset="utf-8">
+<meta name="description" content="24hr crypto stats from coinbase">
+<meta name="author" content="joe">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'marketdata/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'skeleton.css' %}">
+
+<div class=container>
+  <div id=header>
+    <strong id=title>24 Hour Cryptocurrency Statistics from Coinbase Pro </strong>
+    <p> data updated every 10 minutes </p>
+    <hr class=hr>
+  </div>
+</div>
+{% if productstats_list %}
+  <div id=table-container>
+    <table>
+      <tr>
+        <th>Listing</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Volume</th>
+        <th>Last</th>
+        <th>30 Day Volume</th>
+        <th>Last Updated</th>
+      </tr>
+      {% for stat in productstats_list %}
+        <tr>
+          <td><a href="{% url 'marketdata:detail' stat.product.id %}">{{ stat.product }}</a></td>
+          <th>{{ stat.open }}</th>
+          <th>{{ stat.high }}</th>
+          <th>{{ stat.low }}</th>
+          <th>{{ stat.volume }}</th>
+          <th>{{ stat.last }}</th>
+          <th>{{ stat.volume_30day }}</th>
+          <th>{{ stat.last_updated }}</th>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% else %}
+    <p>No statistics are available.</p>
+{% endif %}
